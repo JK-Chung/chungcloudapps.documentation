@@ -1,10 +1,8 @@
-version: "3.9"
+version: "3"
 
 services:
   wiki:
     image: requarks/wiki:2.5
-    depends_on:
-      - db
     environment:
       DB_TYPE: postgres
       DB_HOST: db
@@ -12,9 +10,8 @@ services:
       DB_USER: wikijs
       DB_PASS: password # it's okay to have this in code since this is local DB
       DB_NAME: wiki
-    restart: unless-stopped
     ports:
-    - "80:3000"
+    - ":3000"
 
   db:
     image: postgres:14.2
@@ -24,14 +21,8 @@ services:
       POSTGRES_PASSWORD: password # it's okay to have this in code since this is local DB
     logging:
       driver: "none"
-    restart: unless-stopped
     volumes:
     - db-data:/var/lib/postgresql/data
 
 volumes:
   db-data:
-    name: ${database_volume}
-    external: true
-    driver_opts:
-      uid: 0  # ensure that we have POSIX permissions to volume
-      gid: 0  # ensure that we have POSIX permissions to volume

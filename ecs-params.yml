@@ -1,0 +1,20 @@
+version: 1
+task_definition:
+  task_role_arn: "arn:aws:iam::722515392854:role/Role_for_ChungCloudApps_Documentation"
+  task_execution_role: "arn:aws:iam::722515392854:role/ecsTaskExecutionRole"
+  task_size:
+    cpu_limit: 256
+    mem_limit: 0.5GB
+  services:
+    wiki:
+      essential: true
+      depends_on:
+      - container_name: db
+    db:
+      essential: true
+      efs_volumes:
+        name: db-data
+        filesystem_id: fs-0dd813e35235ea893
+        transit_encryption: ENABLED
+        access_point: fsap-0efcc9ebbf74e2bfb
+        iam: enabled
