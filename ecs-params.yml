@@ -8,9 +8,9 @@ task_definition:
     mem_limit: 0.5GB
   services:
     wiki:
-#     essential: true
+      essential: true
     db:
-#     essential: true
+      essential: true
       efs_volumes:
         name: db-data
         filesystem_id: fs-0dd813e35235ea893
