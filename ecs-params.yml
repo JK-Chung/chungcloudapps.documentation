@@ -1,5 +1,6 @@
 version: 1
 task_definition:
+  ecs_network_mode: awsvpc
   task_role_arn: "arn:aws:iam::722515392854:role/Role_for_ChungCloudApps_Documentation"
   task_execution_role: "arn:aws:iam::722515392854:role/ecsTaskExecutionRole"
   task_size:
@@ -8,8 +9,6 @@ task_definition:
   services:
     wiki:
       essential: true
-      depends_on:
-      - container_name: db
     db:
       essential: true
       efs_volumes:
@@ -18,3 +17,16 @@ task_definition:
         transit_encryption: ENABLED
         access_point: fsap-0efcc9ebbf74e2bfb
         iam: enabled
+run_params:
+  service_discovery:
+    container_name: wiki
+    container_port: 3000
+  network_configuration:
+    awsvpc_configuration:
+      assign_public_ip: DISABLED
+      subnets:
+      - subnet-649a6a2f
+      - subnet-614a683b
+      - subnet-7237d60b
+      security_groups:
+      - sg-0d6557e89e13cf723

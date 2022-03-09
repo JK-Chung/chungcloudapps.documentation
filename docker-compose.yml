@@ -11,7 +11,7 @@ services:
       DB_PASS: password # it's okay to have this in code since this is local DB
       DB_NAME: wiki
     ports:
-    - ":3000"
+    - "3000:3000"
 
   db:
     image: postgres:14.2
@@ -20,7 +20,11 @@ services:
       POSTGRES_USER: wikijs
       POSTGRES_PASSWORD: password # it's okay to have this in code since this is local DB
     logging:
-      driver: "none"
+      driver: "awslogs"
+      options:
+        awslogs-region: eu-west-1
+        awslogs-group: chungcloudapps-documentaion
+        awslogs-stream-prefix: chungcloudapps-documentation
     volumes:
     - db-data:/var/lib/postgresql/data
 
