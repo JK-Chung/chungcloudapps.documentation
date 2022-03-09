@@ -30,3 +30,8 @@ services:
 
 volumes:
   db-data:
+    name: ${database_volume}
+    external: true
+    driver_opts:
+      uid: 0  # ensure that we have POSIX permissions to volume
+      gid: 0  # ensure that we have POSIX permissions to volume
