@@ -3,3 +3,6 @@
 
 # Deploying - Running
 ecs-cli compose start --region eu-west-1 --launch-type FARGATE --create-log-groups --cluster chungcloudapps-documentation
+
+ecs-cli compose service create --region eu-west-1 --launch-type FARGATE --create-log-groups --cluster chungcloudapps-documentation
+

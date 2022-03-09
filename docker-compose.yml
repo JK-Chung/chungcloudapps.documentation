@@ -12,6 +12,12 @@ services:
       DB_NAME: wiki
     ports:
     - "3000:3000"
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: eu-west-1
+        awslogs-group: chungcloudapps-documentation
+        awslogs-stream-prefix: wiki
 
   db:
     image: postgres:14.2
@@ -24,9 +30,9 @@ services:
       options:
         awslogs-region: eu-west-1
         awslogs-group: chungcloudapps-documentaion
-        awslogs-stream-prefix: chungcloudapps-documentation
+        awslogs-stream-prefix: db
     volumes:
     - db-data:/var/lib/postgresql/data
 
 volumes:
-  db-data:
+  db-data: # TODO use EFS volume

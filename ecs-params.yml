@@ -8,9 +8,9 @@ task_definition:
     mem_limit: 0.5GB
   services:
     wiki:
-      essential: true
+#     essential: true
     db:
-      essential: true
+#     essential: true
       efs_volumes:
         name: db-data
         filesystem_id: fs-0dd813e35235ea893
@@ -23,7 +23,7 @@ run_params:
     container_port: 3000
   network_configuration:
     awsvpc_configuration:
-      assign_public_ip: DISABLED
+      assign_public_ip: ENABLED
       subnets:
       - subnet-649a6a2f
       - subnet-614a683b
