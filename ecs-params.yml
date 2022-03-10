@@ -10,7 +10,7 @@ task_definition:
   - name: "db-data"
     filesystem_id: "fs-0dd813e35235ea893"
     transit_encryption: ENABLED
-    access_point: fsap-0efcc9ebbf74e2bfb
+    access_point: "fsap-036df35804c24861c"
     iam: ENABLED
 
   services:
