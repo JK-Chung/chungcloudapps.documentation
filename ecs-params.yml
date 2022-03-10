@@ -22,7 +22,7 @@ task_definition:
 run_params:
   network_configuration:
     awsvpc_configuration:
-      assign_public_ip: DISABLED
+      assign_public_ip: ENABLED
       subnets:
       - subnet-00f78d4966338c11b
       - subnet-051a4e447c8b02a81
