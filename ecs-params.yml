@@ -11,7 +11,7 @@ task_definition:
     filesystem_id: "fs-0dd813e35235ea893"
     transit_encryption: ENABLED
     access_point: fsap-0efcc9ebbf74e2bfb
-    iam: enabled
+    iam: ENABLED
 
   services:
     wiki:
