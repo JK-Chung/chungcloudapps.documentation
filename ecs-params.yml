@@ -7,10 +7,10 @@ task_definition:
     cpu_limit: 256
     mem_limit: 0.5GB
   efs_volumes:
-  - name: "db-data"
-    filesystem_id: "fs-0dd813e35235ea893"
+  - name: db-data
+    filesystem_id: fs-0dd813e35235ea893
     transit_encryption: ENABLED
-    access_point: "fsap-036df35804c24861c"
+    access_point: fsap-036df35804c24861c
     iam: ENABLED
 
   services:
@@ -20,15 +20,12 @@ task_definition:
       essential: true
 
 run_params:
-  service_discovery:
-    container_name: wiki
-    container_port: 3000
   network_configuration:
     awsvpc_configuration:
-      assign_public_ip: ENABLED
+      assign_public_ip: DISABLED
       subnets:
-      - subnet-649a6a2f
-      - subnet-614a683b
-      - subnet-7237d60b
+      - subnet-00f78d4966338c11b
+      - subnet-051a4e447c8b02a81
+      - subnet-0fa71713da89472ce
       security_groups:
       - sg-0d6557e89e13cf723
